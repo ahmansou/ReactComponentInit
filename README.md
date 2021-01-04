@@ -1,4 +1,4 @@
 # ReactComponentInit
 
-Usage : 
-./reactComponentInit ComponentName [class - function] [css, scss, none]
+Usage: 
+	./reactComponentInit [ComponentDirectory] [ComponentName] [class - function] [css, scss, none]
