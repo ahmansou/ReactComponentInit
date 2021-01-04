@@ -1,14 +1,15 @@
 #!/bin/bash
 
-if [ $# -ne 3 ]; then 
-	echo 'Usage: reactComponentInit ComponentName [class - function] [css, scss, none]'
+if [ $# -ne 4 ]; then 
+	echo 'Usage: reactComponentInit [ComponentDirectory] [ComponentName] [class - function] [css, scss, none]'
 else
 	CMPNTDIR=$1
 	CMPNTNAME=$2
 	CMPNTTYPE=$3
 	CMPNTSTYLE=$4
 
-	mkdir $CMPNTDIR/$CMPNTNAME; touch $CMPNTDIR/$CMPNTNAME/$CMPNTNAME.js; 
+	mkdir $CMPNTDIR/$CMPNTNAME; 
+	touch $CMPNTDIR/$CMPNTNAME/$CMPNTNAME.js; 
 	if [ "$CMPNTSTYLE" == "css" ]; then
 		touch $CMPNTNAME/$CMPNTNAME.module.css
 		echo "import classes from './$CMPNTNAME.module.css';" >> $CMPNTDIR/$CMPNTNAME/$CMPNTNAME.js
@@ -19,8 +20,10 @@ else
 		touch $CMPNTNAME/$CMPNTNAME.module.scss
 		echo "import classes from './$CMPNTNAME.module.scss';" >> $CMPNTDIR/$CMPNTNAME/$CMPNTNAME.js
 		echo ".$CMPNTNAME {
- 15 }" >> $CMPNTDIR/$CMPNTNAME/$CMPNTNAME.module.scss
+}" >> $CMPNTDIR/$CMPNTNAME/$CMPNTNAME.module.scss
 	fi
+
+
 	if [ "$CMPNTTYPE" == "class" ]; then
 		echo "import React, { Component } from 'react';
 
